@@ -4,10 +4,10 @@
   <version>0.1.0</version>
   <description>ENPM808x ROS Part 1 - Beginner Tutorials Package</description>
 
-  <maintainer email="arpitdec5@gmail.com">Arpit Aggarwal</maintainer>
+  <maintainer email="arpitagg@umd.edu">Arpit Aggarwal</maintainer>
   <license>MIT</license>
-  <url type="website">http://wiki.ros.org/beginner_tutorials</url>
-  <author email="arpitdec5@gmail.com">Arpit Aggarwal</author> 
+  <url type="website">https://github.com/arp95/beginner_tutorials</url>
+  <author email="arpitagg@umd.edu">Arpit Aggarwal</author> 
 
   <buildtool_depend>catkin</buildtool_depend>
 
