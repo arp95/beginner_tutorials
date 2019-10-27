@@ -20,7 +20,7 @@ int main(int argc, char **argv) {
     while (ros::ok()) {
         std_msgs::String message;
         std::stringstream ss;
-        ss << "hello world " << count;
+        ss << "The count is " << count;
         message.data = ss.str();
         ROS_INFO("%s", message.data.c_str());
 
