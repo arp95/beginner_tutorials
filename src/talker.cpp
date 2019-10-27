@@ -10,9 +10,9 @@
 int main(int argc, char **argv) {
     ros::init(argc, argv, "talker");
     ros::NodeHandle node;
-    
     // Advertise on topic name chatter.
-    ros::Publisher chatterPub = node.advertise<std_msgs::String>("chatter", 1000);
+    ros::Publisher chatterPub =
+node.advertise<std_msgs::String>("chatter", 1000);
     ros::Rate loopRate(10);
 
     // Send message.
