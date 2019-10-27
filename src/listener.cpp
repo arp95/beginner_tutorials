@@ -19,7 +19,7 @@ int main(int argc, char **argv) {
     ros::init(argc, argv, "listener");
     ros::NodeHandle node;
 
-    // Subscibe to a message
+    // Subscribe to a message
     ros::Subscriber sub = node.subscribe("chatter", 1000, chatterCallback);
     ros::spin();
     return 0;

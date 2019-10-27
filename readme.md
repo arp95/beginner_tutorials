@@ -4,7 +4,7 @@
 
 ## Overview of the project
 
-ROS Publisher/Subsciber example following the official ROS Tutorials.
+ROS Publisher/Subsciber example following the official ROS Tutorials as given here (http://wiki.ros.org/ROS/Tutorials/WritingPublisherSubscriber%28c%2B%2B%29).
 
 ## Standard install via command-line
 ```
