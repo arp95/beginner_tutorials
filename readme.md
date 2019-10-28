@@ -6,6 +6,14 @@
 
 ROS Publisher/Subsciber example following the official ROS Tutorials as given here (http://wiki.ros.org/ROS/Tutorials/WritingPublisherSubscriber%28c%2B%2B%29).
 
+## Dependencies
+
+The following dependencies are required to run this package:
+
+1. ROS kinetic
+2. catkin (http://wiki.ros.org/catkin#Installing_catkin)
+3. Ubuntu 16.04 For installing ROS (http://wiki.ros.org/kinetic/Installation)
+
 ## Standard install via command-line
 ```
 cd ~/catkin_ws/src
