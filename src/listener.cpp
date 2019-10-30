@@ -12,7 +12,17 @@
    * @return type void.
    */
 void chatterCallback(const std_msgs::String::ConstPtr& message) {
-    ROS_INFO("I heard: [%s]", message->data.c_str());
+    if (message->data == "ERROR") {
+        ROS_ERROR_STREAM("I heard ERROR Logger Level!");
+    } else if (message->data == "WARN") {
+        ROS_WARN_STREAM("I heard WARN Logger Level!");
+    } else if (message->data == "FATAL") {
+        ROS_FATAL_STREAM("I heard FATAL Logger Level!");
+    } else if (message->data == "DEBUG") {
+        ROS_DEBUG_STREAM("I heard DEBUG Logger Level!");
+    } else if (message->data == "INFO") {
+        ROS_INFO_STREAM("I heard INFO Logger Level!");
+    }
 }
 
 int main(int argc, char **argv) {
@@ -21,9 +31,8 @@ int main(int argc, char **argv) {
     // Use Logger Level INFO
     ROS_INFO_STREAM("Started node listener.");
 
-    ros::NodeHandle node;
-
     // Subscribe to a message
+    ros::NodeHandle node;
     ros::Subscriber sub = node.subscribe("chatter", 1000, chatterCallback);
     ros::spin();
     return 0;
