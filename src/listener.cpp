@@ -17,6 +17,10 @@ void chatterCallback(const std_msgs::String::ConstPtr& message) {
 
 int main(int argc, char **argv) {
     ros::init(argc, argv, "listener");
+
+    // Use Logger Level INFO
+    ROS_INFO_STREAM("Started node listener.");
+
     ros::NodeHandle node;
 
     // Subscribe to a message

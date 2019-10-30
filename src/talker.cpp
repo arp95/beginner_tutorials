@@ -9,6 +9,10 @@
 
 int main(int argc, char **argv) {
     ros::init(argc, argv, "talker");
+
+    // Use Logger Level INFO
+    ROS_INFO_STREAM("Started node talker.");
+
     ros::NodeHandle node;
     // Advertise on topic name chatter.
     ros::Publisher chatterPub =
