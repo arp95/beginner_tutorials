@@ -2,7 +2,7 @@
 <package format="2">
   <name>beginner_tutorials</name>
   <version>0.1.0</version>
-  <description>ENPM808x ROS Part 1 - Beginner Tutorials Package</description>
+  <description>ENPM808x ROS: Beginner Tutorials Package</description>
 
   <maintainer email="arpitagg@umd.edu">Arpit Aggarwal</maintainer>
   <license>MIT</license>
@@ -10,15 +10,10 @@
   <author email="arpitagg@umd.edu">Arpit Aggarwal</author> 
 
   <buildtool_depend>catkin</buildtool_depend>
-
   <build_depend>roscpp</build_depend>
   <build_depend>rospy</build_depend>
   <build_depend>std_msgs</build_depend>
-  <build_depend>message_generation</build_depend>
-
   <exec_depend>roscpp</exec_depend>
   <exec_depend>rospy</exec_depend>
   <exec_depend>std_msgs</exec_depend>
-  <exec_depend>message_runtime</exec_depend>
-
 </package>
