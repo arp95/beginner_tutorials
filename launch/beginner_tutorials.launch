@@ -4,6 +4,7 @@
         type="talker"
         name="talker"
         launch-prefix="xterm -e"
+        args="_param:=warn"
     />
 
     <node
