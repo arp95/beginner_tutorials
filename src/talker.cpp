@@ -13,29 +13,41 @@ int main(int argc, char **argv) {
     // Use Logger Level INFO.
     ROS_INFO_STREAM("Started node talker.");
 
+    // Get param.
+    ros::NodeHandle node("~");
+    std::string param;
+    node.getParam("param", param);
+    ROS_INFO_STREAM("Got param: " << param << ".\n");
+
     // Advertise on topic name chatter.
-    ros::NodeHandle node;
+    ros::NodeHandle talker;
     ros::Publisher chatterPub =
-node.advertise<std_msgs::String>("chatter", 1000);
+talker.advertise<std_msgs::String>("chatter", 1000);
     ros::Rate loopRate(10);
 
-    // Publish message.
-    int count =0;
+    // Sample Logger Levels.
+    ROS_INFO_STREAM("INFO Logger Level.");
+    ROS_DEBUG_STREAM("DEBUG Logger Level.");
+    ROS_WARN_STREAM("WARN Logger Level.");
+    ROS_ERROR_STREAM("ERROR Logger Level.");
+    ROS_FATAL_STREAM("FATAL Logger Level.");
+
+    // Publish INFO messages.
     while (ros::ok()) {
         std_msgs::String message;
         std::stringstream ss;
 
         // Use Logger Levels WARN, ERROR, FATAL, DEBUG, INFO.
-        if (count%5 == 0) {
+        if (param == "warn") {
             ss << "WARN";
             ROS_WARN_STREAM("WARN Logger Level.");
-        } else if (count%7 == 0) {
+        } else if (param == "error") {
             ss << "ERROR";
             ROS_ERROR_STREAM("ERROR Logger Level.");
-        } else if (count%11 == 0) {
+        } else if (param == "fatal") {
             ss << "FATAL";
             ROS_FATAL_STREAM("FATAL Logger Level.");
-        } else if (count%13 == 0) {
+        } else if (param == "debug") {
             ss << "DEBUG";
             ROS_DEBUG_STREAM("DEBUG Logger Level.");
         } else {
@@ -47,7 +59,6 @@ node.advertise<std_msgs::String>("chatter", 1000);
         chatterPub.publish(message);
         ros::spinOnce();
         loopRate.sleep();
-        count = count + 1;
     }
     return 0;
 }

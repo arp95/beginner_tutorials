@@ -28,12 +28,12 @@ void chatterCallback(const std_msgs::String::ConstPtr& message) {
 int main(int argc, char **argv) {
     ros::init(argc, argv, "listener");
 
-    // Use Logger Level INFO
+    // Use Logger Level INFO.
     ROS_INFO_STREAM("Started node listener.");
 
-    // Subscribe to a message
-    ros::NodeHandle node;
-    ros::Subscriber sub = node.subscribe("chatter", 1000, chatterCallback);
+    // Subscribe to a message.
+    ros::NodeHandle listener;
+    ros::Subscriber sub = listener.subscribe("chatter", 1000, chatterCallback);
     ros::spin();
     return 0;
 }
