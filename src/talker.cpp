@@ -49,6 +49,7 @@ talker.advertise<std_msgs::String>("chatter", 1000);
     while (ros::ok()) {
         std_msgs::String message;
         std::stringstream ss;
+        ROS_INFO_STREAM("Entered Loop.");
 
         // Use Logger Levels WARN, ERROR, FATAL, DEBUG, INFO.
         if (param == "warn") {
