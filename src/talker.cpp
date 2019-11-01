@@ -5,19 +5,28 @@
  */
 #include "ros/ros.h"
 #include "std_msgs/String.h"
+#include "beginner_tutorials/AddTwoInts.h"
 #include <sstream>
+
+/**
+   * @brief Adds two integers.
+   * @param[in] req Two numbers as requested by the client.
+   * @param[in] res The result of addition of two numbers.
+   * @return type bool.
+   */
+bool add(beginner_tutorials::AddTwoInts::Request  &req, beginner_tutorials::AddTwoInts::Response &res) {
+    res.sum = req.a + req.b;
+    return true;
+}
 
 int main(int argc, char **argv) {
     ros::init(argc, argv, "talker");
 
-    // Use Logger Level INFO.
+    // Using Logger Level INFO and get param.
     ROS_INFO_STREAM("Started node talker.");
-
-    // Get param.
     ros::NodeHandle node("~");
     std::string param;
     node.getParam("param", param);
-    ROS_INFO_STREAM("Got param: " << param << ".\n");
 
     // Advertise on topic name chatter.
     ros::NodeHandle talker;
@@ -31,6 +40,10 @@ talker.advertise<std_msgs::String>("chatter", 1000);
     ROS_WARN_STREAM("WARN Logger Level.");
     ROS_ERROR_STREAM("ERROR Logger Level.");
     ROS_FATAL_STREAM("FATAL Logger Level.");
+
+    // Advertise service.
+    ros::ServiceServer service = talker.advertiseService("add_two_ints", add);
+    ROS_INFO_STREAM("Service ready.");
 
     // Publish INFO messages.
     while (ros::ok()) {
