@@ -35,9 +35,9 @@ int main(int argc, char **argv) {
     // Subscribe to a message.
     ros::NodeHandle listener;
     ros::Subscriber sub = listener.subscribe("chatter", 1000, chatterCallback);
- 
     // Call service.
-    ros::ServiceClient client = listener.serviceClient<beginner_tutorials::AddTwoInts>("add_two_ints");
+    ros::ServiceClient client = listener.serviceClient
+<beginner_tutorials::AddTwoInts>("add_two_ints");
     beginner_tutorials::AddTwoInts srv;
     srv.request.a = 1;
     srv.request.b = 2;
