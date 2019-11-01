@@ -14,7 +14,8 @@
    * @param[in] res The result of addition of two numbers.
    * @return type bool.
    */
-bool add(beginner_tutorials::AddTwoInts::Request  &req, beginner_tutorials::AddTwoInts::Response &res) {
+bool add(beginner_tutorials::AddTwoInts::Request
+&req, beginner_tutorials::AddTwoInts::Response &res) {
     res.sum = req.a + req.b;
     return true;
 }
@@ -46,7 +47,6 @@ talker.advertise<std_msgs::String>("chatter", 1000);
     } else {
         ROS_INFO_STREAM("INFO Logger Level.");
     }
-    
     // Advertise service.
     ros::ServiceServer service = talker.advertiseService("add_two_ints", add);
     ROS_INFO_STREAM("Service ready.");
