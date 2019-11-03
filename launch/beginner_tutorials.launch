@@ -1,10 +1,11 @@
 <launch>
+    <arg name="param"/>
     <node
         pkg="beginner_tutorials"
         type="talker"
         name="talker"
         launch-prefix="xterm -e"
-        args="_param:=warn"
+        args="_param:=$(arg param)"
     />
 
     <node
