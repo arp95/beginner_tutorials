@@ -1,11 +1,39 @@
-/**@copyright  MIT License (c) 2019 Arpit Aggarwal
- * @file       talker.cpp
- * @author     Arpit Aggarwal
- * @brief      This tutorial demonstrates simple sending of messages over the ROS system.
+/**
+ *  MIT License
+ *
+ *  Copyright (c) 2019 Arpit Aggarwal
+ *
+ *  Permission is hereby granted, free of charge, to any person obtaining a
+ *  copy of this software and associated documentation files (the "Software"),
+ *  to deal in the Software without restriction, including without
+ *  limitation the rights to use, copy, modify, merge, publish, distribute,
+ *  sublicense, and/or sell copies of the Software, and to permit persons to
+ *  whom the Software is furnished to do so, subject to the following
+ *  conditions:
+ *
+ *  The above copyright notice and this permission notice shall be included
+ *  in all copies or substantial portions of the Software.
+ *
+ *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ *  THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ *  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+ *  DEALINGS IN THE SOFTWARE.
  */
+
+/**
+ *@file       talker.cpp
+ *@author     Arpit Aggarwal
+ *@copyright  MIT License
+ *@brief      This tutorial demonstrates simple sending of messages over the ROS system.
+ */
+
 #include "ros/ros.h"
 #include "std_msgs/String.h"
 #include "beginner_tutorials/AddTwoInts.h"
+#include <tf/transform_broadcaster.h>
 #include <sstream>
 
 /**
@@ -54,6 +82,15 @@ talker.advertise<std_msgs::String>("chatter", 1000);
     // Publish INFO messages.
     int count = 0;
     while (ros::ok()) {
+        // tf Broadcast frame1.
+        static tf::TransformBroadcaster tfBr;
+        tf::Transform transform;
+        transform.setOrigin(tf::Vector3(count, 0.0, 0.0));
+        tf::Quaternion quaternion;
+        quaternion.setRPY(0, 90, 90);
+        transform.setRotation(quaternion);
+        tfBr.sendTransform(tf::StampedTransform(
+transform, ros::Time::now(), "world", "talk"));
         std_msgs::String message;
         std::stringstream ss;
         ROS_INFO_STREAM("Entered Loop.");
