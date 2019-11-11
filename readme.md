@@ -63,6 +63,7 @@ Passing param=warn and record bag file:
 cd catkin_ws
 source devel/setup.bash
 roslaunch beginner_tutorials beginner_tutorials.launch param:=warn record:=true
+```
 
 3. Terminal 3 (inspect tf frames, provided talker node is running):
 ```
